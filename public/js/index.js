@@ -14,14 +14,6 @@ socket.on('newMessage', (msg) => {
     li.text(`${msg.from}: ${msg.text}`);
     jQuery('#messages').append(li); 
 });
-/*
-socket.emit('createMessage', {
-    from: 'Jose',
-    text: 'Hello guys.'
-}, function(data) {
-    console.log('Go it', data);
-});
-*/
 jQuery('#message-form').on('submit', function(e){
     e.preventDefault();
     socket.emit('createMessage', {
