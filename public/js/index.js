@@ -8,9 +8,9 @@ socket.on('disconnect', () => {
     console.log('Disconnected from server.')
 });
 
-socket.on('newMessage', (msg) => {
+socket.on('newMessage', function(msg) {
     console.log('New message', msg);
-    var li = jQuery('<li><li/>');
+    var li = jQuery('<li></li>');
     li.text(`${msg.from}: ${msg.text}`);
     jQuery('#messages').append(li); 
 });
