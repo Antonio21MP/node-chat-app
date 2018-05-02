@@ -43,6 +43,16 @@ describe('Users', () => {
         var userList = users.getUsersList('Production');
 
         expect(userList).toEqual(['Eduardo','Alfredo']);
-    })
+    });
+
+    it('should remove a user', () => {
+        var updateList = [ 
+            { id: '2', name: 'Eduardo', room: 'Production' },
+            { id: '3', name: 'Alfredo', room: 'Production' },
+            { id: '4', name: 'Alejandra', room: 'Devs' } 
+        ];
+        var resUsers = users.removeUser('1');
+        expect(resUsers).toEqual(updateList);
+    });
 });
 

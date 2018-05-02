@@ -11,7 +11,9 @@ class Users {
     }
 
     removeUser (id) {
-
+        var users = this.users.filter((user) => user.id != id);
+        //console.log(users);
+        return users;
     }
 
     getUser (id) {
