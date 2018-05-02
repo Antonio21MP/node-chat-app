@@ -11,15 +11,16 @@ class Users {
     }
 
     removeUser (id) {
-        var users = this.users.filter((user) => user.id != id);
-        //console.log(users);
-        return users;
+        var user = this.getUser(id);
+        if(user){
+            this.users = this.users.filter((user) => user.id !== id);
+        }
+        return user;
     }
 
     getUser (id) {
-        var users = this.users.filter((user) => user.id === id);
         //console.log(users);
-        return users;
+        return this.users.filter((user) => user.id === id)[0];
     }
 
     getUsersList (room) {

@@ -46,32 +46,29 @@ describe('Users', () => {
     });
 
     it('should remove a user', () => {
-        var updateList = [ 
-            { id: '2', name: 'Eduardo', room: 'Production' },
-            { id: '3', name: 'Alfredo', room: 'Production' },
-            { id: '4', name: 'Alejandra', room: 'Devs' } 
-        ];
-        var resUsers = users.removeUser('1');
-        expect(resUsers).toEqual(updateList);
+        var userId = '1';
+        var user = users.removeUser(userId);
+
+        expect(user.id).toBe(userId);
+        expect(users.users.length).toBe(3);
     });
 
     it('should not remove a user', () => {
-        var resUser = users.removeUser('5');
-        expect(resUser).toEqual(users.users);
+        var userId = '99';
+        var user = users.removeUser(userId);
+
+        expect(user).toNotExist();
+        expect(users.users.length).toBe(4);
     });
 
     it('should find user', () => {
-        var user =  {
-            id: '4',
-            name: 'Alejandra',
-            room: 'Devs'   
-        };
-        var resUser = users.getUser('4');
-        expect(resUser).toEqual([user]);
+        var user =  '4'
+        var resUser = users.getUser(user);
+        expect(resUser.id).toBe(user);
     });
     it('should not find user', () => {
         var resUser = users.getUser('5');
-        expect(resUser).toEqual([]);
+        expect(resUser).toNotExist();
     });
 });
 
