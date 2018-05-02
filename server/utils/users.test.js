@@ -54,5 +54,24 @@ describe('Users', () => {
         var resUsers = users.removeUser('1');
         expect(resUsers).toEqual(updateList);
     });
+
+    it('should not remove a user', () => {
+        var resUser = users.removeUser('5');
+        expect(resUser).toEqual(users.users);
+    });
+
+    it('should find user', () => {
+        var user =  {
+            id: '4',
+            name: 'Alejandra',
+            room: 'Devs'   
+        };
+        var resUser = users.getUser('4');
+        expect(resUser).toEqual([user]);
+    });
+    it('should not find user', () => {
+        var resUser = users.getUser('5');
+        expect(resUser).toEqual([]);
+    });
 });
 

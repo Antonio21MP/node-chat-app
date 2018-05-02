@@ -17,7 +17,9 @@ class Users {
     }
 
     getUser (id) {
-
+        var users = this.users.filter((user) => user.id === id);
+        //console.log(users);
+        return users;
     }
 
     getUsersList (room) {
